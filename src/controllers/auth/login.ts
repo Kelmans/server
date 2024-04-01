@@ -2,7 +2,7 @@ import { Body, Controller, Post, Res } from '@nestjs/common';
 import { UserCredentials } from '../../dto/auth/login';
 import { LoginService } from '../../services/auth/login';
 
-@Controller('login')
+@Controller('auth')
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
@@ -11,5 +11,10 @@ export class LoginController {
     const response = await this.loginService.loginUser(userCredentials);
 
     res.json(response);
+  }
+
+  @Post('/registration')
+  async register() {
+    await this.loginService.register();
   }
 }

@@ -3,18 +3,15 @@ import { HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({ collection: 'user' })
 export class User {
-  @Prop({ required: true, unique: true })
-  id: number;
-
-  @Prop({ required: true })
+  @Prop()
   first_name: string;
 
-  @Prop({ required: true })
+  @Prop()
   last_name: string;
 
-  @Prop({ required: true })
+  @Prop()
   email: string;
 }
 

@@ -13,6 +13,17 @@ export class LoginService {
     };
   }
 
+  async register() {
+    const createdUser = new this.userModel({
+      first_name: 'Vlad',
+      last_name: 'Some',
+      email: 'email',
+    });
+
+    console.log(createdUser);
+    return createdUser.save();
+  }
+
   async findAll(): Promise<User[]> {
     Logger.log('This action returns all USERS');
     return this.userModel.find();
