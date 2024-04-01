@@ -13,7 +13,7 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type,Authorization',
   });
 
-  await app.listen(3001); // На этом порте будет крутиться бэкенд
+  await app.listen(3006); // На этом порте будет крутиться бэкенд
 }
 bootstrap();
 

@@ -10,7 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     }),
     AuthModule,
     MongooseModule.forRoot('mongodb://localhost:27017', {
-      dbName: 'vlad-app',
+      dbName: 'test',
     }),
   ],
   controllers: [],
