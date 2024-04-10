@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/index';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserSchema } from "../schemas/user.schema";
 
 @Module({
   imports: [
@@ -9,11 +10,10 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
     }),
     AuthModule,
-    MongooseModule.forRoot('mongodb://localhost:27017', {
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017', {
       dbName: 'test',
     }),
+    AuthModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

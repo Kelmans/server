@@ -1,8 +1,8 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './modules/app.module';
-import { MongoClient } from 'mongodb';
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./modules/app.module";
+import { NestExpressApplication } from "@nestjs/platform-express";
 
-const mongoClient = new MongoClient('mongodb://127.0.0.1:27017/');
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,25 +13,25 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type,Authorization',
   });
 
-  await app.listen(3006); // На этом порте будет крутиться бэкенд
+  await app.listen(3000); // На этом порте будет крутиться бэкенд
 }
 bootstrap();
 
-async function run() {
-  try {
-    // Подключаемся к серверу
-    await mongoClient.connect();
-    console.log('Подключение установлено');
-    const db = mongoClient.db('test');
-    const collection = db.collection('users');
-    const count = await collection.countDocuments();
-    console.log(count, 'count');
-  } catch (err) {
-    console.log(err);
-  } finally {
-    // Закрываем подключение при завершении работы или при ошибке
-    // await mongoClient.close();
-    // console.log('Подключение закрыто');
-  }
-}
-run().catch(console.log);
+// async function run() {
+//   try {
+//     // Подключаемся к серверу
+//     await mongoClient.connect();
+//     console.log('Подключение установлено');
+//     const db = mongoClient.db('test');
+//     const collection = db.collection('users');
+//     const count = await collection.countDocuments();
+//     console.log(count, 'КОННЕКТ ЕСТЬ КАКИЕ-ТО ЧЕНДЖИ2');
+//   } catch (err) {
+//     console.log(err);
+//   } finally {
+//     // Закрываем подключение при завершении работы или при ошибке
+//     // await mongoClient.close();
+//     // console.log('Подключение закрыто');
+//   }
+// }
+// run().catch(console.log);
